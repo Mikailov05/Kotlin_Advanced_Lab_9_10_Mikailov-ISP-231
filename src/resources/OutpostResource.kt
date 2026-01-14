@@ -1,4 +1,4 @@
-//private val OutpostResource.id: String
+package resources//private val OutpostResource.id: String
 
 //data class OutpostResource{
 //val id: Int,

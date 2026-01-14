@@ -1,4 +1,4 @@
-import kotlin.math.abs
+package example
 
 var age: Int = 18
     get() = field

@@ -1,3 +1,5 @@
+package resources
+
 class OutpostWorker(val name: String) {
     var energy: Int = 100
         set(value) {

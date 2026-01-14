@@ -1,3 +1,5 @@
+package resources
+
 class ResourceManager {
     //private val resources = mutableListOf<OutpostResources>()
 

@@ -1,4 +1,4 @@
-import kotlin.inc
+package characters
 
 class Hero (val name: String) {
 
