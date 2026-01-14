@@ -50,12 +50,14 @@ fun main() {
             //maksim.hello()
         }
     }
-    abstract class Figure{
+
+    abstract class Figure {
         abstract fun perimetr(): Float
         abstract fun area(): Float
     }
-   // class Rectangle(val width: Float,val height: Float) : Figure(){
-     // override fun perimetr(): Float
+    // class Rectangle(val width: Float,val height: Float) : Figure(){
+    // override fun perimetr(): Float
 
-  //  }
+    //  }
 //}
+}
