@@ -17,9 +17,9 @@ fun main(){
       //  processor.show(result)
     }
     println("\n=== Сравнение data class ===")
-    println("Платеж 1: $payment1")
-    println("Платеж 2: $payment2")
-    println("Одинаковые? ${payment1==payment2}")
+  //  println("Платеж 1: $payment1")
+   // println("Платеж 2: $payment2")
+   // println("Одинаковые? ${payment1==payment2}")
 
 
 
