@@ -1,3 +1,4 @@
+```markdown
 # Лабораторная работа №9-10: Продвинутое ООП на Kotlin
 
 ## Описание
@@ -6,7 +7,7 @@
 ## Структура проекта
 Проект содержит примеры реализации продвинутых механизмов ООП, а также пояснения к ключевым концепциям.
 
-
+```
 src/
 ├── actions/           # Интерфейсы
 ├── characters/        # Персонажи и герои
@@ -14,23 +15,24 @@ src/
 ├── modules/          # Модули аванпоста
 ├── resources/        # Ресурсы и управление
 └── Main.kt          # Главный файл программы
-
+```
 
 ## Как запустить проект
 1. Клонируйте репозиторий:
-bash
-git clone <https://github.com/Mikailov05/Kotlin_Advanced_Lab_9_10_Mikailov-ISP-231>
+```bash
+git clone https://github.com/Mikailov05/Kotlin_Advanced_Lab_9_10_Mikailov-ISP-231.git
+```
 
 2. Откройте проект в IntelliJ IDEA.
 3. Запустите любой пример через контекстное меню или напрямую из `main`.
 
-Изученные темы и примеры реализации
+## Изученные темы и примеры реализации
 
-1. Геттеры и сеттеры
+### 1. Геттеры и сеттеры
 В Kotlin свойства по умолчанию имеют автоматически сгенерированные геттеры и сеттеры. Их можно переопределять для добавления валидации, логирования или вычисляемых значений.
-```
-Пример:
-kotlin
+
+**Пример:**
+```kotlin
 class Hero(val name: String) {
     var health: Int = 100
         set(value) {
@@ -101,7 +103,6 @@ abstract class OutpostModule(val name: String, var level: Int = 1) {
 class EnergyGenerator : OutpostModule("Генератор энергии") {
     override fun performAction(manager: ResourceManager) {
         println("Генератор производит 20 энергии")
-     
     }
 }
 ```
@@ -118,22 +119,79 @@ interface VideoPlayable {
 interface AudioPlayable {
     fun play()
 }
+
 class MediaPlayer : VideoPlayable, AudioPlayable {
     override fun play() {
         println("Воспроизводится аудио и видео")
     }
 }
+
 interface Movable {
     fun move() {
         println("Движение")
     }
     fun stop()
 }
+
 fun main() {
     val player = MediaPlayer()
     player.play() 
 }
 ```
+
+### 6. Sealed-классы
+**Sealed-классы** используются для представления ограниченного набора состояний или результатов, которые известны на этапе компиляции.
+
+Они позволяют:
+- гарантировать обработку всех возможных вариантов;
+- безопасно использовать конструкцию `when` без `else`;
+- удобно описывать состояния, события и результаты действий.
+
+**Пример: результат работы модуля**
+```kotlin
+sealed class ModuleResult {
+    data class Success(val message: String) : ModuleResult()
+    data class ResourceProduced(val resourceName: String, val amount: Int) : ModuleResult()
+    data class NotEnoughResources(
+        val resourceName: String,
+        val required: Int,
+        val available: Int
+    ) : ModuleResult()
+    data class Error(val reason: String) : ModuleResult()
+}
+```
+
+### 7. Object в Kotlin
+**object** — это специальная конструкция Kotlin, которая создаёт единственный экземпляр класса (Singleton).
+
+**Особенности:**
+- создаётся при первом обращении;
+- существует в одном экземпляре;
+- не имеет конструктора.
+
+**Пример: глобальный логгер**
+```kotlin
+object Logger {
+    private var counter = 0
+
+    fun log(message: String) {
+        counter++
+        println("[$counter] $message")
+    }
+}
+```
+
+**Использование:**
+```kotlin
+Logger.log("Инициализация системы")
+Logger.log("Модуль запущен")
+```
+
+**object удобно использовать для:**
+- логгеров;
+- конфигураций;
+- состояний без данных в sealed-классах;
+- утилитарных классов.
 
 ## Пример проекта: Galaxy Outpost Manager
 Мини-симулятор космической базы, демонстрирующий все изученные концепции:
@@ -141,6 +199,8 @@ fun main() {
 - **Data-класс OutpostResource** — игровые ресурсы
 - **Абстрактный класс OutpostModule** — базовый класс модулей базы
 - **Интерфейс ModuleAction** — контракт для взаимодействия с ресурсами
+- **Sealed-класс ModuleResult** — результат работы модулей
+- **Object Logger** — глобальный логгер для отслеживания событий
 - **Класс ResourceManager** — управление ресурсами
 
 ## Автор
@@ -149,11 +209,3 @@ fun main() {
 ## Лицензия
 Проект создан в учебных целях. Свободное использование с указанием авторства.
 ```
-
-Этот README.md включает:
-1. исходное описание
-2. Структуру проекта
-3. Инструкцию по запуску
-4. Подробные разделы по всем изученным темам с кодом
-5. Описание учебного проекта
-6. Автора и лицензию
