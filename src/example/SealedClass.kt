@@ -6,7 +6,7 @@ sealed class NetworkResult{
     object  Loading : NetworkResult()
 }
 
-fun handleResult(result: NetworkResult){
+fun handleResult(result: NetworkResult) {
     when {
         result is NetworkResult.Success -> {
             println("Успех: ${result.data}")
@@ -17,7 +17,7 @@ fun handleResult(result: NetworkResult){
 
     }
 
-    fun main(){
+    fun main() {
         val success = NetworkResult.Success(data = "Данные получены")
         val error = NetworkResult.Error(message = "Сервер не отвечает", code = 500)
         val loading = NetworkResult.Loading
@@ -28,5 +28,8 @@ fun handleResult(result: NetworkResult){
 
 
     }
-
 }
+
+
+
+
